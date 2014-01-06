@@ -9,7 +9,9 @@ $(document).on('submit','#rsalogin', function(e){
 		server 		= elm.attr('action'), data,
     secure_login = elm.attr('data-secure');
 
-    console.log(secure_login);
+    if(secure_login || secure_login !== 'false'){
+      console.log('secure login ? ');
+    }
 
   var cleartext = {
       username : username,
