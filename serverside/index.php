@@ -28,7 +28,7 @@ function DecryptRSA($message,$private_key, $passphrase = false){
 		$key = openssl_get_privatekey($private_key, $passphrase);
 
 		// Decrypt the message.
-		openssl_private_decrypt($encrypted,$newsource,$key);
+		openssl_private_decrypt($message,$newsource,$key);
 
 		// Openssl returns message in base64.. so we need to decode.
 		return base64_decode($newsource);
