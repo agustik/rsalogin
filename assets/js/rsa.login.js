@@ -3,6 +3,10 @@
 $(document).on('submit','#rsalogin', function(e){
   e.preventDefault();
 
+  /*
+    Define vars;
+  */
+
 	var elm 		= $(this),
 		username	= elm.find('input[name="username"]').val(),
 		password	= elm.find('input[name="password"]').val(),
@@ -10,17 +14,23 @@ $(document).on('submit','#rsalogin', function(e){
     secure_login = elm.attr('data-secure'),
     encrypted = false;
 
+
+    /* Create object for handle username and password */
     var cleartext = {
       username : username,
       password : password
     }
 
     if(secure_login !== 'false'){
+
+      /* Try to encrypt the object as string */
       encrypted = EncryptMessage(JSON.stringify(cleartext));
     }
 
+  /* Selcect the encrypted if success */
   data = (encrypted) ? encrypted : cleartext;
 
+  /* Do the ajax call. */
   $.ajax({
     url : server,
     method : 'POST',
