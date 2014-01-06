@@ -11,7 +11,11 @@ $private_key = file_get_contents('../keys/private.key');
 $output = new stdClass();
 
 if ($rsa_data){
-	$decrypted = DecryptRSA($rsa_data, $private_key);
+	$decrypted = json_decode(DecryptRSA($rsa_data, $private_key));
+
+	$output->status = "success";
+	$output->data->message="Message was decrypted successfully";
+	$output->data->username='';
 	var_dump($decrypted);
 }
 
