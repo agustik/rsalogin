@@ -7,21 +7,22 @@ $rsa_data = (array_key_exists('base64', $_POST)) 	? $_POST['base64'] : false;
 
 $private_key = file_get_contents('../keys/private.key');
 
+$output->status='fail';
 
 $output = new stdClass();
 
 if ($rsa_data){
 	$decrypted = json_decode(DecryptRSA($rsa_data, $private_key));
-
 	$output->status = "success";
 	$output->data->message="Message was decrypted successfully";
-	$output->data->username='';
-	var_dump($decrypted);
+	$output->data->username=$decrypted->username;
+}else{
+	$output->status = "success";
+	$output->data->message="Fallback to cleartext";
+	$output->data->username = $username;
 }
 
-
-
-
+print json_encode($output);
 
 function DecryptRSA($message,$private_key, $passphrase = false){
 	try {
