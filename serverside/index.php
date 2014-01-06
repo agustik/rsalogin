@@ -5,6 +5,8 @@ $password = (array_key_exists('password', $_POST)) 	? $_POST['password'] : false
 $rsa_data = (array_key_exists('base64', $_POST)) 	? $_POST['base64'] : false;
 
 
+
+// load the private key.
 $private_key = file_get_contents('../keys/private.key');
 
 $output->status='fail';

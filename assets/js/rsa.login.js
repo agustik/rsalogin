@@ -2,10 +2,14 @@
 
 $(document).on('submit','#rsalogin', function(e){
   e.preventDefault();
+
 	var elm 		= $(this),
 		username	= elm.find('input[name="username"]').val(),
 		password	= elm.find('input[name="password"]').val(),
-		server 		= elm.attr('action'), data;
+		server 		= elm.attr('action'), data,
+    secure_login = elm.attr('data-secure');
+
+    console.log(secure_login);
 
   var cleartext = {
       username : username,
@@ -24,17 +28,21 @@ $(document).on('submit','#rsalogin', function(e){
       console.log(result);
     }
   });
-
-
   return false;
 });
 
 function FetchPublicKey(){
+  /*
+    function to fetch the public key, can be ajax etc.
+  */
 	return  $('#public_key').val();
-	//return public_key;
 }
 
 function EncryptMessage(message){
+
+  /*
+    Try's to encrypt the message if works.
+  */
 
   try {
     var public_key = CleanPublickey(FetchPublicKey()), 
