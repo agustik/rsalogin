@@ -10,9 +10,13 @@ $private_key = file_get_contents('../keys/private.key');
 
 $output = new stdClass();
 
-$decrypted = DecryptRSA($rsa_data, $private_key);
+if ($rsa_data){
+	$decrypted = DecryptRSA($rsa_data, $private_key);
+	var_dump($decrypted);
+}
 
-var_dump($decrypted);
+
+
 
 
 function DecryptRSA($message,$private_key, $passphrase = false){
