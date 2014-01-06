@@ -33,7 +33,7 @@ function DecryptRSA($message,$private_key, $passphrase = false){
 		// Openssl returns message in base64.. so we need to decode.
 		return base64_decode($newsource);
 	}
-	catch ($e){
+	catch (Exception $e){
 		return false;
 	}
 	
