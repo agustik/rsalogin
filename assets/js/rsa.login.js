@@ -7,17 +7,17 @@ $(document).on('submit','#rsalogin', function(e){
 		username	= elm.find('input[name="username"]').val(),
 		password	= elm.find('input[name="password"]').val(),
 		server 		= elm.attr('action'), data,
-    secure_login = elm.attr('data-secure');
+    secure_login = elm.attr('data-secure'),
+    encrypted = false;
 
-    if(secure_login || secure_login !== 'false'){
-      console.log('secure login ? ');
-    }
-
-  var cleartext = {
+    var cleartext = {
       username : username,
       password : password
     }
-  var encrypted = EncryptMessage(JSON.stringify(cleartext));
+
+    if(secure_login !== 'false'){
+      encrypted = EncryptMessage(JSON.stringify(cleartext));
+    }
 
   data = (encrypted) ? encrypted : cleartext;
 
