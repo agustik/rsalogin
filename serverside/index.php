@@ -1,8 +1,8 @@
 <?php
 
-$username = (array_key_exists('username', $_POST)) ? $_POST['username'] : false;
-$password = (array_key_exists('password', $_POST)) ? $_POST['password'] : false;
-$rsa_data = (array_key_exists('rsa_data', $_POST)) ? $_POST['rsa_data'] : false;
+$username = (array_key_exists('username', $_POST)) 	? $_POST['username'] : false;
+$password = (array_key_exists('password', $_POST)) 	? $_POST['password'] : false;
+$rsa_data = (array_key_exists('base64', $_POST)) 	? $_POST['base64'] : false;
 
 
 $private_key = file_get_contents('../keys/private.key');

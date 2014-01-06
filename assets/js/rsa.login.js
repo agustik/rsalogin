@@ -13,7 +13,6 @@ $(document).on('submit','#rsalogin', function(e){
     }
   var encrypted = EncryptMessage(JSON.stringify(cleartext));
 
-
   data = (encrypted) ? encrypted : cleartext;
 
   $.ajax({
